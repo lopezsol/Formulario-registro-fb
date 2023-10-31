@@ -17,6 +17,7 @@ const db = firebase.firestore();
 
 document.querySelector('#formulario').addEventListener('submit', (event) => {
     event.preventDefault()
+    mostrarError('', '', '')
     const nombre = document.querySelector('#name')
     const email = document.querySelector('#email')
     const clave = document.querySelector('#password')
@@ -24,10 +25,6 @@ document.querySelector('#formulario').addEventListener('submit', (event) => {
     const resultado = validarCampos(nombre, email, clave)
 
     if (resultado) {
-        
-        console.log(nombre.value)
-        console.log(email.value)
-        console.log(clave.value)
         db.collection("users").add({
             nombre: nombre.value,
             email: email.value,
